@@ -15,7 +15,7 @@ class sieveViewController:UIViewController{
     var motionManager:CMMotionManager?
     var queue:NSOperationQueue?
     
-    var diceImage = ["one", "two", "three", "four", "five", "six"]
+    var diceImage = [UIImage(named: "one")!, UIImage(named: "two")!, UIImage(named: "three")!, UIImage(named: "four")!, UIImage(named: "five")!, UIImage(named: "six")!]
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -52,7 +52,7 @@ class sieveViewController:UIViewController{
     func addDice(){
         diceImageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
         diceImageView?.center = CGPoint(x: self.view.frame.size.width / 2, y: 300)
-        diceImageView?.image = UIImage(named: diceImage[0])
+        diceImageView?.image = diceImage[0]
         self.view.addSubview(diceImageView!)
     }
     
@@ -70,7 +70,9 @@ class sieveViewController:UIViewController{
                     var z = accelerometerData.acceleration.z
                     if (fabs(x) > 2.0 || fabs(y) > 2.0 || fabs(z) > 2.0){
                         dispatch_sync(dispatch_get_main_queue(), {
-                            self.diceImageView?.image = UIImage(named: self.diceImage[1])
+                            self.beginDiceChoice()
+                            var randomdata = Int(arc4random()) % 6
+                            self.diceImageView?.image = self.diceImage[randomdata]
                         })
                     }
                 }
@@ -80,7 +82,10 @@ class sieveViewController:UIViewController{
     }
     
     func beginDiceChoice(){
-        
+        self.diceImageView?.animationImages = self.diceImage
+        self.diceImageView?.animationDuration = 0.4
+        self.diceImageView?.animationRepeatCount = 3
+        self.diceImageView?.startAnimating()
     }
     
     
