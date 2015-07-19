@@ -126,7 +126,6 @@ class lotteryViewController: UIViewController {
             var alert = UIAlertView(title: "警告", message: "请输入正确的数字", delegate: self, cancelButtonTitle: "确定")
             alert.show()
         }
-        
     }
     
     func clearLabel(){
