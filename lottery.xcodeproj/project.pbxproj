@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		FF4B79281A84A53C009668FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B79271A84A53C009668FA /* AppDelegate.swift */; };
-		FF4B792A1A84A53C009668FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B79291A84A53C009668FA /* ViewController.swift */; };
+		FF4B792A1A84A53C009668FA /* lotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B79291A84A53C009668FA /* lotteryViewController.swift */; };
 		FF4B792D1A84A53C009668FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4B792B1A84A53C009668FA /* Main.storyboard */; };
 		FF4B792F1A84A53C009668FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4B792E1A84A53C009668FA /* Images.xcassets */; };
 		FF4B79321A84A53C009668FA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4B79301A84A53C009668FA /* LaunchScreen.xib */; };
 		FF4B793E1A84A53D009668FA /* lotteryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B793D1A84A53D009668FA /* lotteryTests.swift */; };
+		FF93C5C51B5B7280000DC4BA /* mainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93C5C41B5B7280000DC4BA /* mainTab.swift */; };
+		FF93C5C71B5B7604000DC4BA /* sieveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93C5C61B5B7604000DC4BA /* sieveViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +31,15 @@
 		FF4B79221A84A53C009668FA /* lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4B79261A84A53C009668FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF4B79271A84A53C009668FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF4B79291A84A53C009668FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF4B79291A84A53C009668FA /* lotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lotteryViewController.swift; sourceTree = "<group>"; };
 		FF4B792C1A84A53C009668FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF4B792E1A84A53C009668FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FF4B79311A84A53C009668FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FF4B79371A84A53C009668FA /* lotteryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lotteryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4B793C1A84A53D009668FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF4B793D1A84A53D009668FA /* lotteryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lotteryTests.swift; sourceTree = "<group>"; };
+		FF93C5C41B5B7280000DC4BA /* mainTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainTab.swift; sourceTree = "<group>"; };
+		FF93C5C61B5B7604000DC4BA /* sieveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sieveViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +82,13 @@
 			isa = PBXGroup;
 			children = (
 				FF4B79271A84A53C009668FA /* AppDelegate.swift */,
-				FF4B79291A84A53C009668FA /* ViewController.swift */,
+				FF4B79291A84A53C009668FA /* lotteryViewController.swift */,
 				FF4B792B1A84A53C009668FA /* Main.storyboard */,
 				FF4B792E1A84A53C009668FA /* Images.xcassets */,
 				FF4B79301A84A53C009668FA /* LaunchScreen.xib */,
 				FF4B79251A84A53C009668FA /* Supporting Files */,
+				FF93C5C41B5B7280000DC4BA /* mainTab.swift */,
+				FF93C5C61B5B7604000DC4BA /* sieveViewController.swift */,
 			);
 			path = lottery;
 			sourceTree = "<group>";
@@ -212,8 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4B792A1A84A53C009668FA /* ViewController.swift in Sources */,
+				FF93C5C51B5B7280000DC4BA /* mainTab.swift in Sources */,
+				FF4B792A1A84A53C009668FA /* lotteryViewController.swift in Sources */,
 				FF4B79281A84A53C009668FA /* AppDelegate.swift in Sources */,
+				FF93C5C71B5B7604000DC4BA /* sieveViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +413,7 @@
 				FF4B79431A84A53D009668FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF4B79441A84A53D009668FA /* Build configuration list for PBXNativeTarget "lotteryTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +422,7 @@
 				FF4B79461A84A53D009668FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

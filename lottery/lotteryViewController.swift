@@ -19,8 +19,8 @@ class lotteryViewController: UIViewController {
     
     var label:[UILabel?] = []
     
-    var numTextField: UITextField?
-    var totalTextField: UITextField?
+    var numTextField: UITextField? //一次抽出的数量
+    var totalTextField: UITextField? //总共的数字
     
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class lotteryViewController: UIViewController {
         totalTextField = UITextField(frame: CGRectMake(0, 0, self.view.frame.size.width, 20))
         totalTextField?.center = CGPoint(x: self.view.frame.size.width / 2, y: 100)
         totalTextField?.textAlignment = NSTextAlignment.Center
-        totalTextField?.placeholder = "点我修改数字的上限(最大1000000)"
+        totalTextField?.placeholder = "点我修改数字的上限(最大1000000,不可修改)"
         self.view.addSubview(totalTextField!)
         
         numTextField = UITextField(frame: CGRectMake(0, 0, self.view.frame.size.width, 20))
@@ -52,15 +52,25 @@ class lotteryViewController: UIViewController {
     }
     
     func addButton(){
-        var button:UIButton = UIButton(frame: CGRectMake(0, 0, 200, 50))
-        button.center = CGPoint(x: self.view.frame.size.width / 2, y: 480)
-        button.backgroundColor = UIColor.yellowColor()
+        var button:UIButton = UIButton(frame: CGRectMake(0, 0, self.view.frame.size.width / 2 - 20, 50))
+        button.center = CGPoint(x: self.view.frame.size.width / 4, y: 485)
+        button.backgroundColor = UIColor(red: 189.0/255, green: 252.0/255, blue: 201.0/255, alpha: 1)
         button.setTitle("抽奖", forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        button.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
         button.addTarget(self, action: "choujiang:", forControlEvents: UIControlEvents.TouchUpInside)
         button.clipsToBounds = true
-        button.layer.cornerRadius = 5.0
+        button.layer.cornerRadius = 10.0
         self.view.addSubview(button)
+        
+        var reset:UIButton = UIButton(frame: CGRectMake(0, 0, self.view.frame.size.width / 2 - 20, 50))
+        reset.center = CGPoint(x: self.view.frame.size.width / 4 * 3, y: 485)
+        reset.backgroundColor = UIColor(red: 189.0/255, green: 252.0/255, blue: 201.0/255, alpha: 1)
+        reset.setTitle("重置(清空所有数据)", forState: UIControlState.Normal)
+        reset.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
+        reset.addTarget(self, action: "reset:", forControlEvents: UIControlEvents.TouchUpInside)
+        reset.clipsToBounds = true
+        reset.layer.cornerRadius = 10.0
+        self.view.addSubview(reset)
     }
     
     func addLabel(){
@@ -74,7 +84,7 @@ class lotteryViewController: UIViewController {
         
         for var i = 0; i < 20; ++i{
             var resLabel = UILabel(frame: CGRectMake(0, 0, self.view.frame.size.width / 2 - 20, 30))
-            var height:CGFloat = 160 + CGFloat((30 * Int(i / 2)))
+            var height:CGFloat = 160 + CGFloat((31 * Int(i / 2)))
             var width:CGFloat = self.view.frame.size.width / 4 * CGFloat(1 + (i % 2 * 2))
             resLabel.center = CGPoint(x: width, y: height)
             resLabel.text = "我是抽奖框"
@@ -91,6 +101,7 @@ class lotteryViewController: UIViewController {
     
     func choujiang(sender:UIButton){
         if (judgeData(numTextField!.text) && judgeData(totalTextField!.text)){
+            totalTextField?.enabled = false
             times = numTextField!.text.toInt()!
             upperBound = totalTextField!.text.toInt()!
             clearLabel()
@@ -135,6 +146,17 @@ class lotteryViewController: UIViewController {
             }
         }
         return true
+    }
+    
+    func reset(sender:UIButton){
+        clearLabel()
+        self.hasSelected = 0
+        self.totalTextField?.enabled = true
+        for var i = 0; i < upperBound; ++i{
+            judge[i] = false
+        }
+        self.totalTextField?.text = ""
+        self.numTextField?.text = ""
     }
     
     
