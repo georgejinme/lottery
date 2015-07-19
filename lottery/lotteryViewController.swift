@@ -22,9 +22,12 @@ class lotteryViewController: UIViewController {
     var numTextField: UITextField? //一次抽出的数量
     var totalTextField: UITextField? //总共的数字
     
+    var scrollView: UIScrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 600)
+        self.view.addSubview(scrollView)
         addButton()
         addLabel()
         addtextField()
@@ -42,13 +45,15 @@ class lotteryViewController: UIViewController {
         totalTextField?.center = CGPoint(x: self.view.frame.size.width / 2, y: 100)
         totalTextField?.textAlignment = NSTextAlignment.Center
         totalTextField?.placeholder = "点我修改数字的上限(最大1000000,不可修改)"
-        self.view.addSubview(totalTextField!)
+        totalTextField?.font = UIFont.systemFontOfSize(14)
+        self.scrollView.addSubview(totalTextField!)
         
         numTextField = UITextField(frame: CGRectMake(0, 0, self.view.frame.size.width, 20))
         numTextField?.center = CGPoint(x: self.view.frame.size.width / 2, y: 120)
         numTextField?.textAlignment = NSTextAlignment.Center
         numTextField?.placeholder = "点我修改抽出的数量(最大20)"
-        self.view.addSubview(numTextField!)
+        numTextField?.font = UIFont.systemFontOfSize(14)
+        self.scrollView.addSubview(numTextField!)
     }
     
     func addButton(){
@@ -60,17 +65,17 @@ class lotteryViewController: UIViewController {
         button.addTarget(self, action: "choujiang:", forControlEvents: UIControlEvents.TouchUpInside)
         button.clipsToBounds = true
         button.layer.cornerRadius = 10.0
-        self.view.addSubview(button)
+        self.scrollView.addSubview(button)
         
         var reset:UIButton = UIButton(frame: CGRectMake(0, 0, self.view.frame.size.width / 2 - 20, 50))
         reset.center = CGPoint(x: self.view.frame.size.width / 4 * 3, y: 485)
         reset.backgroundColor = UIColor(red: 189.0/255, green: 252.0/255, blue: 201.0/255, alpha: 1)
-        reset.setTitle("重置(清空所有数据)", forState: UIControlState.Normal)
+        reset.setTitle("重置", forState: UIControlState.Normal)
         reset.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
         reset.addTarget(self, action: "reset:", forControlEvents: UIControlEvents.TouchUpInside)
         reset.clipsToBounds = true
         reset.layer.cornerRadius = 10.0
-        self.view.addSubview(reset)
+        self.scrollView.addSubview(reset)
     }
     
     func addLabel(){
@@ -80,7 +85,7 @@ class lotteryViewController: UIViewController {
         logo.textAlignment  = NSTextAlignment.Center
         logo.textColor = UIColor.redColor()
         logo.font = UIFont.boldSystemFontOfSize(28)
-        self.view.addSubview(logo)
+        self.scrollView.addSubview(logo)
         
         for var i = 0; i < 20; ++i{
             var resLabel = UILabel(frame: CGRectMake(0, 0, self.view.frame.size.width / 2 - 20, 30))
@@ -95,7 +100,7 @@ class lotteryViewController: UIViewController {
             resLabel.layer.borderWidth = 0.5
             resLabel.layer.cornerRadius = 3
             self.label.append(resLabel)
-            self.view.addSubview(resLabel)
+            self.scrollView.addSubview(resLabel)
         }
     }
     
