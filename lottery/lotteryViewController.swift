@@ -122,8 +122,7 @@ class lotteryViewController: UIViewController, UIScrollViewDelegate {
             for var count = 0;count < times;{
                 var randomdata = Int(arc4random()) % (upperBound)
                 if self.hasSelected == self.upperBound{
-                    var alert = UIAlertView(title: "警告", message: "所有数字已经抽完", delegate: self, cancelButtonTitle: "确定")
-                    alert.show()
+                    alert("所有数字已经抽完")
                     break
                 }
                 else if judge[randomdata] == true{
@@ -136,9 +135,15 @@ class lotteryViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
         }else{
-            var alert = UIAlertView(title: "警告", message: "请输入正确的数字", delegate: self, cancelButtonTitle: "确定")
-            alert.show()
+            alert("请输入正确的数字")
         }
+    }
+    
+    func alert(text:String){
+        var alert = UIAlertController(title: "警告", message: text, preferredStyle: UIAlertControllerStyle.Alert)
+        var cancelButton = UIAlertAction(title: "确定", style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(cancelButton)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func clearLabel(){
