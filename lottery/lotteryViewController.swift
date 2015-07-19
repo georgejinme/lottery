@@ -8,7 +8,7 @@
 
 import UIKit
 
-class lotteryViewController: UIViewController {
+class lotteryViewController: UIViewController, UIScrollViewDelegate {
 
     var data:[Int] = []
     var judge:[Bool] = []
@@ -26,8 +26,7 @@ class lotteryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 600)
-        self.view.addSubview(scrollView)
+        addScroll()
         addButton()
         addLabel()
         addtextField()
@@ -35,9 +34,19 @@ class lotteryViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    func touchScroll(sender:AnyObject){
         numTextField?.resignFirstResponder()
         totalTextField?.resignFirstResponder()
+    }
+    
+    func addScroll(){
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 600)
+        self.scrollView.delegate = self
+        var recognizer = UITapGestureRecognizer(target: self, action: "touchScroll:")
+        recognizer.numberOfTapsRequired = 1
+        recognizer.numberOfTouchesRequired = 1
+        self.scrollView.addGestureRecognizer(recognizer)
+        self.view.addSubview(scrollView)
     }
 
     func addtextField(){
@@ -126,7 +135,6 @@ class lotteryViewController: UIViewController {
                     ++self.hasSelected
                 }
             }
-            
         }else{
             var alert = UIAlertView(title: "警告", message: "请输入正确的数字", delegate: self, cancelButtonTitle: "确定")
             alert.show()
