@@ -120,16 +120,16 @@ class lotteryViewController: UIViewController, UIScrollViewDelegate {
             upperBound = totalTextField!.text.toInt()!
             clearLabel()
             for var count = 0;count < times;{
-                var randomdata = Int(arc4random()) % (upperBound)
+                var randomdata = (UInt32(arc4random()) % UInt32(upperBound))
                 if self.hasSelected == self.upperBound{
                     alert("所有数字已经抽完")
                     break
                 }
-                else if judge[randomdata] == true{
+                else if judge[Int(randomdata)] == true{
                     continue
                 }else{
-                    judge[randomdata] = true
-                    label[count]!.text = String(data[randomdata])
+                    judge[Int(randomdata)] = true
+                    label[count]!.text = String(data[Int(randomdata)])
                     ++count
                     ++self.hasSelected
                 }
